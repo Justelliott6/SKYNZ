@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYNZ Creator Streaming Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #6d28d9;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+            --bg-dark: #0f172a;
+            --bg-darker: #0a0e27;
+            --surface: #1e293b;
+            --surface-light: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(236, 72, 153, 0.08));
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #7c3aed, #ec4899) 1;
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.3), inset 0 0 20px rgba(124, 58, 237, 0.1);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(90deg, #7c3aed, #ec4899);
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.2;
+            filter: blur(8px);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Main content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Media Section */
+        .media-section {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.05));
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4) 1;
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.3), inset 0 0 20px rgba(124, 58, 237, 0.1);
+            position: relative;
+        }
+
+        .media-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4);
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(10px);
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.3; filter: blur(10px); }
+            50% { opacity: 0.6; filter: blur(15px); }
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .media-box {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.05));
+            border: 1.5px solid rgba(124, 58, 237, 0.4);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.2), inset 0 0 15px rgba(124, 58, 237, 0.05);
+            position: relative;
+        }
+
+        .media-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.8), transparent);
+        }
+
+        .media-box:hover {
+            border-color: rgba(124, 58, 237, 0.8);
+            transform: translateY(-4px);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.4), 0 0 60px rgba(236, 72, 153, 0.2), inset 0 0 15px rgba(124, 58, 237, 0.1);
+        }
+
+        .media-header {
+            padding: 0.75rem;
+            background: rgba(124, 58, 237, 0.15);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        .media-embed {
+            width: 100%;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .media-info {
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Go Live Section */
+        .go-live-section {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.2));
+            border: 2px solid rgba(236, 72, 153, 0.5);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .go-live-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .go-live-header h2 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .go-live-button {
+            background: linear-gradient(135deg, var(--secondary), #ff006e);
+            border: 2px solid rgba(236, 72, 153, 0.8);
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.6), 0 0 60px rgba(236, 72, 153, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .go-live-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .go-live-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(236, 72, 153, 0.8), 0 0 80px rgba(236, 72, 153, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .go-live-button:active {
+            transform: scale(0.98);
+        }
+
+        .go-live-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option-card {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(6, 182, 212, 0.05));
+            border: 1.5px solid rgba(124, 58, 237, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.1), inset 0 0 10px rgba(124, 58, 237, 0.05);
+        }
+
+        .option-card:hover {
+            border-color: rgba(124, 58, 237, 0.6);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(6, 182, 212, 0.1));
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.3), inset 0 0 10px rgba(124, 58, 237, 0.1);
+        }
+
+        .option-card.active {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(124, 58, 237, 0.1));
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.4), inset 0 0 15px rgba(6, 182, 212, 0.1);
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .option-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Platform Selection */
+        .platform-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .platform-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .platform-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .platform-checkbox:hover {
+            border-color: rgba(124, 58, 237, 0.5);
+            background: rgba(124, 58, 237, 0.15);
+        }
+
+        .platform-checkbox input {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+        }
+
+        .platform-checkbox label {
+            cursor: pointer;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        /* Right Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-card {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.05));
+            border: 1.5px solid rgba(124, 58, 237, 0.4);
+            border-radius: 12px;
+            padding: 1rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.2), inset 0 0 15px rgba(124, 58, 237, 0.05);
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Live Chat */
+        .live-chat {
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .chat-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        .chat-content {
+            flex: 1;
+        }
+
+        .chat-author {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        .chat-text {
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+            word-wrap: break-word;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 6px;
+            padding: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+        }
+
+        .chat-input input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .chat-input button {
+            background: var(--accent);
+            border: none;
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Analytics */
+        .analytics-card {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .metric-change {
+            font-size: 0.75rem;
+            color: var(--success);
+            margin-top: 0.25rem;
+        }
+
+        /* Scrollbar */
+        .chat-messages::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 2px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(124, 58, 237, 0.4);
+            border-radius: 2px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--surface);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(124, 58, 237, 0.2);
+        }
+
+        /* Facebook Feed Styles */
+        .facebook-feed-container {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .facebook-post {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .facebook-post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .facebook-post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+        }
+
+        .facebook-post-info {
+            flex: 1;
+        }
+
+        .facebook-post-author {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .facebook-post-time {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .facebook-post-content {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .facebook-post-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                grid-column: 1;
+                grid-row: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>⚡ SKYNZ Creator Dashboard</h1>
+        <div class="header-status">
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                <span>Ready to Stream</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Media Section -->
+            <div class="media-section">
+                <div class="section-title">🎵 Your Media</div>
+                <div class="media-grid">
+                    <!-- Spotify -->
+                    <div class="media-box">
+                        <div class="media-header">🎵 Spotify Playlist</div>
+                        <div class="media-embed">
+                            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4PgB1DLOPa749YLqJBa4Zw?utm_source=generator&si=86d83434c2384154" width="100%" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        </div>
+                        <div class="media-info">Your Playlist - Featured</div>
+                    </div>
+
+                    <!-- YouTube -->
+                    <div class="media-box">
+                        <div class="media-header">📺 YouTube Video</div>
+                        <div class="media-embed">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/kPBzTxZQG5Q?si=oOiyXRmSSZOu4JFC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="media-info">Your Latest Content</div>
+                    </div>
+
+                    <!-- Apple Music -->
+                    <div class="media-box">
+                        <div class="media-header">🎧 Apple Music</div>
+                        <div class="media-embed">
+                            <div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem;">🎶</div>
+                        </div>
+                        <div class="media-info">Playlist - 45 songs</div>
+                    </div>
+
+                    <!-- SoundCloud -->
+                    <div class="media-box">
+                        <div class="media-header">☁️ SoundCloud</div>
+                        <div class="media-embed">
+                            <div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem;">🔊</div>
+                        </div>
+                        <div class="media-info">Tracks - 28 songs</div>
+                    </div>
+
+                    <!-- Twitch -->
+                    <div class="media-box">
+                        <div class="media-header">🎮 Twitch Video</div>
+                        <div class="media-embed" style="padding: 0; overflow: hidden;">
+                            <div id="twitch-embed" style="width: 100%; height: 200px;"></div>
+                        </div>
+                        <div class="media-info">Your Twitch Content</div>
+                    </div>
+
+                    <!-- TikTok -->
+                    <div class="media-box">
+                        <div class="media-header">🎬 TikTok Profile</div>
+                        <div class="media-embed">
+                            <div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 3rem;">🎵</div>
+                        </div>
+                        <div class="media-info">Videos - 567K followers</div>
+                    </div>
+
+                    <!-- Facebook Reel -->
+                    <div class="media-box">
+                        <div class="media-header">📱 Facebook Reel</div>
+                        <div class="media-embed" style="padding: 0; overflow: hidden;">
+                            <iframe src="https://www.facebook.com/plugins/video.php?height=200&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F788657604051928%2F&show_text=false&width=100%25&t=0" width="100%" height="200" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        </div>
+                        <div class="media-info">Your Facebook Content</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facebook Feed Section -->
+            <div class="media-section" style="margin-top: 1.5rem;">
+                <div class="section-title">📘 Facebook Feed</div>
+                <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 8px; padding: 1rem; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📘</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                            <p style="margin-bottom: 0.5rem;">Facebook Feed Viewer</p>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Connect your Facebook page to display live feed here</p>
+                            <button style="margin-top: 1rem; padding: 0.75rem 1.5rem; background: var(--accent); border: none; color: var(--bg-dark); border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Connect Facebook</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Go Live Section -->
+            <div class="go-live-section">
+                <div class="go-live-header">
+                    <h2>🔴 GO LIVE</h2>
+                    <button class="go-live-button" onclick="openGoLiveModal()">GO LIVE NOW</button>
+                </div>
+
+                <div class="go-live-options">
+                    <div class="option-card active" onclick="selectOption(this, 'stream')">
+                        <div class="option-title">📹 Live Stream</div>
+                        <div class="option-desc">Stream live to all platforms</div>
+                    </div>
+                    <div class="option-card" onclick="selectOption(this, 'burst')">
+                        <div class="option-title">⚡ 15-Sec Burst</div>
+                        <div class="option-desc">Upload pre-recorded clip</div>
+                    </div>
+                    <div class="option-card" onclick="selectOption(this, 'schedule')">
+                        <div class="option-title">📅 Schedule</div>
+                        <div class="option-desc">Schedule for later</div>
+                    </div>
+                </div>
+
+                <div class="platform-section">
+                    <div class="platform-title">Select Platforms:</div>
+                    <div class="platform-grid">
+                        <div class="platform-checkbox">
+                            <input type="checkbox" id="youtube" checked>
+                            <label for="youtube">YouTube</label>
+                        </div>
+                        <div class="platform-checkbox">
+                            <input type="checkbox" id="tiktok" checked>
+                            <label for="tiktok">TikTok</label>
+                        </div>
+                        <div class="platform-checkbox">
+                            <input type="checkbox" id="instagram" checked>
+                            <label for="instagram">Instagram</label>
+                        </div>
+                        <div class="platform-checkbox">
+                            <input type="checkbox" id="twitch" checked>
+                            <label for="twitch">Twitch</label>
+                        </div>
+                        <div class="platform-checkbox">
+                            <input type="checkbox" id="facebook" checked>
+                            <label for="facebook">Facebook</label>
+                        </div>
+                        <div class="platform-checkbox">
+                            <input type="checkbox" id="linkedin">
+                            <label for="linkedin">LinkedIn</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="sidebar">
+            <!-- Live Chat -->
+            <div class="sidebar-card">
+                <div class="sidebar-title">💬 Live Chat (127 online)</div>
+                <div class="live-chat">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message">
+                            <div class="chat-avatar">L</div>
+                            <div class="chat-content">
+                                <div class="chat-author">LunaBeat</div>
+                                <div class="chat-text">This is fire! 🔥</div>
+                            </div>
+                        </div>
+                        <div class="chat-message">
+                            <div class="chat-avatar">S</div>
+                            <div class="chat-content">
+                                <div class="chat-author">SynthWave89</div>
+                                <div class="chat-text">Love this vibe</div>
+                            </div>
+                        </div>
+                        <div class="chat-message">
+                            <div class="chat-avatar">N</div>
+                            <div class="chat-content">
+                                <div class="chat-author">NeonDream</div>
+                                <div class="chat-text">When's the next drop? 👀</div>
+                            </div>
+                        </div>
+                        <div class="chat-message">
+                            <div class="chat-avatar">P</div>
+                            <div class="chat-content">
+                                <div class="chat-author">PulseRider</div>
+                                <div class="chat-text">Amazing energy!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Say something..." id="chatInput">
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics -->
+            <div class="sidebar-card">
+                <div class="sidebar-title">📊 Live Analytics</div>
+                <div class="analytics-card">
+                    <div class="metric-label">Viewers</div>
+                    <div class="metric-value">1,248</div>
+                    <div class="metric-change">↑ 12% from last stream</div>
+                </div>
+                <div class="analytics-card" style="margin-top: 0.75rem;">
+                    <div class="metric-label">Engagement</div>
+                    <div class="metric-value">8.3%</div>
+                    <div class="metric-change">↑ 2.1% from average</div>
+                </div>
+                <div class="analytics-card" style="margin-top: 0.75rem;">
+                    <div class="metric-label">Chat Messages</div>
+                    <div class="metric-value">342</div>
+                    <div class="metric-change">↑ 28% engagement</div>
+                </div>
+                <div class="analytics-card" style="margin-top: 0.75rem;">
+                    <div class="metric-label">Avg Watch Time</div>
+                    <div class="metric-value">4m 32s</div>
+                    <div class="metric-change">↑ 18 seconds</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Go Live Modal -->
+    <div class="modal" id="goLiveModal">
+        <div class="modal-content">
+            <div class="modal-title">🔴 Start Broadcasting</div>
+
+            <div class="form-group">
+                <label>Stream Title</label>
+                <input type="text" placeholder="Enter stream title..." id="streamTitle" value="Live Music Session">
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" placeholder="Add description..." id="streamDesc" value="Join me for an exclusive live performance!">
+            </div>
+
+            <div class="form-group">
+                <label>Stream Type</label>
+                <select id="streamType">
+                    <option value="live">Live Stream (Real-time)</option>
+                    <option value="burst">15-Second Burst (Pre-recorded)</option>
+                    <option value="schedule">Schedule for Later</option>
+                </select>
+            </div>
+
+            <div id="burstUpload" style="display: none;">
+                <div class="form-group">
+                    <label>Upload Video (15 seconds max)</label>
+                    <input type="file" accept="video/*" id="videoFile">
+                </div>
+            </div>
+
+            <div id="scheduleTime" style="display: none;">
+                <div class="form-group">
+                    <label>Schedule Date & Time</label>
+                    <input type="datetime-local" id="scheduleDateTime">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Selected Platforms:</label>
+                <div style="padding: 0.75rem; background: rgba(124, 58, 237, 0.1); border-radius: 8px; font-size: 0.9rem;">
+                    <span id="platformList">YouTube, TikTok, Instagram, Twitch, Facebook</span>
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn-primary" onclick="confirmGoLive()">Start Broadcasting</button>
+                <button class="btn-secondary" onclick="closeGoLiveModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Twitch Embed Script -->
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+    <script>
+        // Initialize Twitch Player
+        window.addEventListener('load', function() {
+            if (window.Twitch && window.Twitch.Player) {
+                new window.Twitch.Player("twitch-embed", {
+                    video: "2055338833",
+                    width: "100%",
+                    height: "200"
+                });
+            }
+        });
+
+        function openGoLiveModal() {
+            document.getElementById('goLiveModal').classList.add('active');
+            updatePlatformList();
+        }
+
+        function closeGoLiveModal() {
+            document.getElementById('goLiveModal').classList.remove('active');
+        }
+
+        function selectOption(element, type) {
+            document.querySelectorAll('.option-card').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            
+            document.getElementById('burstUpload').style.display = type === 'burst' ? 'block' : 'none';
+            document.getElementById('scheduleTime').style.display = type === 'schedule' ? 'block' : 'none';
+        }
+
+        function updatePlatformList() {
+            const platforms = [];
+            document.querySelectorAll('.platform-checkbox input:checked').forEach(checkbox => {
+                platforms.push(checkbox.nextElementSibling.textContent);
+            });
+            document.getElementById('platformList').textContent = platforms.join(', ') || 'No platforms selected';
+        }
+
+        function confirmGoLive() {
+            const title = document.getElementById('streamTitle').value;
+            const platforms = [];
+            document.querySelectorAll('.platform-checkbox input:checked').forEach(checkbox => {
+                platforms.push(checkbox.nextElementSibling.textContent);
+            });
+            
+            alert(`🔴 Broadcasting "${title}" to: ${platforms.join(', ')}`);
+            closeGoLiveModal();
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (message) {
+                const chatMessages = document.getElementById('chatMessages');
+                const newMessage = document.createElement('div');
+                newMessage.className = 'chat-message';
+                newMessage.innerHTML = `
+                    <div class="chat-avatar">Y</div>
+                    <div class="chat-content">
+                        <div class="chat-author">You</div>
+                        <div class="chat-text">${message}</div>
+                    </div>
+                `;
+                chatMessages.appendChild(newMessage);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                input.value = '';
+
+                // Simulate response
+                setTimeout(() => {
+                    const responses = [
+                        'Thanks for watching! 🎵',
+                        'Love the energy! ⚡',
+                        'More content coming! 🚀',
+                        'Thanks for the support! 💜',
+                        'Check out my other streams!'
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    
+                    const reply = document.createElement('div');
+                    reply.className = 'chat-message';
+                    reply.innerHTML = `
+                        <div class="chat-avatar">C</div>
+                        <div class="chat-content">
+                            <div class="chat-author">Creator</div>
+                            <div class="chat-text">${randomResponse}</div>
+                        </div>
+                    `;
+                    chatMessages.appendChild(reply);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        document.getElementById('streamType').addEventListener('change', (e) => {
+            selectOption(document.querySelector('.option-card'), e.target.value);
+        });
+
+        document.querySelectorAll('.platform-checkbox input').forEach(checkbox => {
+            checkbox.addEventListener('change', updatePlatformList);
+        });
+
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>

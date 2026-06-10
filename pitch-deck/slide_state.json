@@ -1,0 +1,195 @@
+{
+  "project_info": {
+    "title": "SKYNZ",
+    "created": 1780953442.643,
+    "last_updated": 1780953442.643,
+    "total_slides": 18
+  },
+  "slides": [
+    {
+      "id": "title",
+      "state": "edit_pending",
+      "pageNum": 1
+    },
+    {
+      "id": "problem",
+      "state": "edit_pending",
+      "pageNum": 2
+    },
+    {
+      "id": "opportunity",
+      "state": "edit_pending",
+      "pageNum": 3
+    },
+    {
+      "id": "solution",
+      "state": "edit_pending",
+      "pageNum": 4
+    },
+    {
+      "id": "business_model",
+      "state": "edit_pending",
+      "pageNum": 5
+    },
+    {
+      "id": "gtm",
+      "state": "edit_pending",
+      "pageNum": 6
+    },
+    {
+      "id": "competitive",
+      "state": "edit_pending",
+      "pageNum": 7
+    },
+    {
+      "id": "financials_y1",
+      "state": "edit_pending",
+      "pageNum": 8
+    },
+    {
+      "id": "financials_y23",
+      "state": "edit_pending",
+      "pageNum": 9
+    },
+    {
+      "id": "team",
+      "state": "edit_pending",
+      "pageNum": 10
+    },
+    {
+      "id": "use_of_funds",
+      "state": "edit_pending",
+      "pageNum": 11
+    },
+    {
+      "id": "timeline",
+      "state": "edit_pending",
+      "pageNum": 12
+    },
+    {
+      "id": "why_invest",
+      "state": "edit_pending",
+      "pageNum": 13
+    },
+    {
+      "id": "cta",
+      "state": "edit_pending",
+      "pageNum": 14
+    },
+    {
+      "id": "appendix_metrics",
+      "state": "edit_pending",
+      "pageNum": 15
+    },
+    {
+      "id": "appendix_competitive",
+      "state": "edit_pending",
+      "pageNum": 16
+    },
+    {
+      "id": "appendix_risk",
+      "state": "edit_pending",
+      "pageNum": 17
+    },
+    {
+      "id": "appendix_success",
+      "state": "edit_pending",
+      "pageNum": 18
+    }
+  ],
+  "outline": [
+    {
+      "id": "title",
+      "title": "SKYNZ",
+      "summary": "Creator-Owned Platform Powered by Solana. Own Your Creator Page. Control Your Audience. Build Your Legacy.",
+      "image_plan": "/home/ubuntu/upload/FACEBOOKBANNERSKYNZ.jpeg - The image is a title banner for SKYNZ, matching the title slide content and branding."
+    },
+    {
+      "id": "problem",
+      "title": "The Problem",
+      "summary": "Creators don't own their audiences. Platforms control reach, monetization, and can ban creators instantly. 87% of creators feel platform-dependent with no portable audience ownership."
+    },
+    {
+      "id": "opportunity",
+      "title": "The Opportunity",
+      "summary": "$104B creator economy growing 25% annually. 200M+ creators seeking ownership and control. Perfect timing with mainstream blockchain adoption."
+    },
+    {
+      "id": "solution",
+      "title": "The Solution",
+      "summary": "SKYNZ offers creator-owned pages with blockchain verification via Solana NFTs. 92% revenue share, customizable pages, collectible badges, and full content control.",
+      "image_plan": "/home/ubuntu/upload/SKYNZotherplafomsamplepage.png - This image shows a sample SKYNZ creator page with various features, directly illustrating the solution."
+    },
+    {
+      "id": "business_model",
+      "title": "Business Model",
+      "summary": "Multiple revenue streams: Creator subscriptions ($9.99-$999.95), collectible badges, NFT minting, marketplace commission (8% vs 30% competitors), and premium features."
+    },
+    {
+      "id": "gtm",
+      "title": "Go-to-Market Strategy",
+      "summary": "4-phase organic growth: Foundation (100 creators), Logo Incentive (1K creators), Community (5K creators), Enterprise (10K creators). No paid ads, creator-driven growth."
+    },
+    {
+      "id": "competitive",
+      "title": "Competitive Advantage",
+      "summary": "100% creator ownership, blockchain verification, 92% revenue share, full customization, collectible badges, and portable audience. Defensible moat through NFT ownership and network effects.",
+      "image_plan": "/home/ubuntu/upload/SKYNZsampleofotherplat.png - This image shows a comparison of a creator's page on a traditional platform versus SKYNZ, visually highlighting the competitive advantage."
+    },
+    {
+      "id": "financials_y1",
+      "title": "Financial Projections - Year 1",
+      "summary": "Q1-Q4 growth: Creators 100→10K, MRR $5K→$500K, Total revenue $1.146M, Profitability by Q4. Path to profitability: Month 12."
+    },
+    {
+      "id": "financials_y23",
+      "title": "Financial Projections - Years 2-3",
+      "summary": "Year 2: $8M revenue, $3M profit, 50K creators. Year 3: $20M revenue, $10M profit, 100K creators. Consistent 50-150% growth trajectory."
+    },
+    {
+      "id": "team",
+      "title": "The Team",
+      "summary": "Experienced builders with creator economy expertise, blockchain knowledge, product design excellence, and organic growth specialization. Passionate about creator ownership."
+    },
+    {
+      "id": "use_of_funds",
+      "title": "Use of Funds",
+      "summary": "$1M seed round: Product Development 40%, Marketing & Growth 30%, Operations 15%, Contingency 15%. 18-month runway to Series A."
+    },
+    {
+      "id": "timeline",
+      "title": "Funding Timeline",
+      "summary": "Seed: $1M now for 18 months. Series A: $5M at Month 18 with 10K creators and $1M+ ARR. Path to profitability and international expansion."
+    },
+    {
+      "id": "why_invest",
+      "title": "Why Invest in SKYNZ",
+      "summary": "Massive market, creator demand at peak, perfect timing with blockchain maturity, defensible business model, early-mover advantage, and 50%+ net margins by Year 3."
+    },
+    {
+      "id": "cta",
+      "title": "Call to Action",
+      "summary": "Join the creator revolution. We're building the future of creator ownership. Looking for strategic investors, Web3 partners, and creator economy advisors."
+    },
+    {
+      "id": "appendix_metrics",
+      "title": "Key Metrics",
+      "summary": "Creator growth: 100→10K in 12 months. Revenue: $6.5K→$780K quarterly. Break-even Month 9, profitable Month 12, 50%+ margins by Year 3."
+    },
+    {
+      "id": "appendix_competitive",
+      "title": "Competitive Analysis",
+      "summary": "SKYNZ vs Patreon (ownership advantage), Substack (multi-media), YouTube (control & revenue), TikTok (monetization). Each competitor has weaknesses SKYNZ solves."
+    },
+    {
+      "id": "appendix_risk",
+      "title": "Risk Mitigation",
+      "summary": "Regulatory: Legal counsel & compliance. Adoption: Community focus. Competition: Fast execution & moat. Technical: Experienced team & redundancy."
+    },
+    {
+      "id": "appendix_success",
+      "title": "Success Metrics",
+      "summary": "Year 1: 10K creators, $1M ARR, profitability. Year 2: 50K creators, $8M revenue, international expansion. Year 3: 100K creators, $20M revenue, DAO governance."
+    }
+  ]
+}
