@@ -1,0 +1,58 @@
+{
+  "name": "Void Echo Badge",
+  "symbol": "SKYNZ",
+  "description": "A cyberpunk collectible badge for SKYNZ Creator Command Page. The Void Echo represents the infinite possibilities of the digital universe—where creators' voices echo across dimensions, reaching audiences in unexpected ways. Limited edition badge with unique serial number and braided neon border.",
+  "image": "https://skynz.io/badges/void-echo.png",
+  "external_url": "https://skynz.io/badges/void-echo",
+  "attributes": [
+    {
+      "trait_type": "Badge Type",
+      "value": "Founder"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Legendary"
+    },
+    {
+      "trait_type": "Color Theme",
+      "value": "Dark Purple & Neon Pink"
+    },
+    {
+      "trait_type": "Serial Number",
+      "value": "SKYNZ-004"
+    },
+    {
+      "trait_type": "Release Date",
+      "value": "2026-06-10"
+    },
+    {
+      "trait_type": "Creator Royalty",
+      "value": "10%"
+    },
+    {
+      "trait_type": "Collectible Status",
+      "value": "Limited to 100"
+    },
+    {
+      "trait_type": "Blockchain",
+      "value": "Solana"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://skynz.io/badges/void-echo.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "seller_fee_basis_points": 1000,
+  "creators": [
+    {
+      "address": "SKYNZCreatorWalletAddress",
+      "share": 100,
+      "verified": true
+    }
+  ]
+}

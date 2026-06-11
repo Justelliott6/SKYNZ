@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKYNZ Creator Setup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Futura', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #ecedee;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* Header */
+        .header {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 0, 110, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff006e, #0066ff);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, #ff006e, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 12px;
+            color: #0066ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Left Panel - Forms */
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-section {
+            background: rgba(20, 25, 50, 0.8);
+            border: 1px solid rgba(255, 0, 110, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-section h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #ecedee;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-section h3::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, #ff006e, #0066ff);
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: #9ba1a6;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            background: rgba(10, 14, 39, 0.6);
+            border: 1px solid rgba(255, 0, 110, 0.2);
+            border-radius: 6px;
+            color: #ecedee;
+            font-family: inherit;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #687076;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff006e;
+            box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+            background: rgba(10, 14, 39, 0.8);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .status {
+            font-size: 12px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status.success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .status::before {
+            content: '●';
+            font-size: 8px;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff006e, #0066ff);
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.6);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Right Panel - Preview */
+        .right-panel {
+            position: sticky;
+            top: 20px;
+        }
+
+        .preview-container {
+            background: rgba(20, 25, 50, 0.8);
+            border: 3px solid #ff006e;
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.2);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 0, 110, 0.2);
+        }
+
+        .preview-title {
+            font-size: 14px;
+            color: #0066ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .preview-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .preview-item {
+            background: rgba(10, 14, 39, 0.6);
+            border: 1px solid rgba(255, 0, 110, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 12px;
+        }
+
+        .preview-item label {
+            color: #9ba1a6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .preview-item .value {
+            color: #ecedee;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .preview-empty {
+            color: #687076;
+            font-style: italic;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .right-panel {
+                position: static;
+            }
+        }
+
+        /* Animations */
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 0, 110, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 0, 110, 0.4);
+            }
+        }
+
+        .form-section:hover {
+            animation: glow 2s ease-in-out;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 0, 110, 0.2);
+        }
+
+        .tab {
+            padding: 10px 15px;
+            background: transparent;
+            border: none;
+            color: #9ba1a6;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: #ff006e;
+            border-bottom-color: #ff006e;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <div class="logo">
+                    <div class="logo-icon">▶</div>
+                    <div>
+                        <div class="logo-text">SKYNZ</div>
+                        <div class="tagline">Creator Command Page</div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 11px; color: #687076;">
+                Build creator pages, custom SKINZ,<br>media boxes, and analytics
+            </div>
+        </div>
+
+        <!-- Left Panel - Forms -->
+        <div class="left-panel">
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab(0)">Create Profile</button>
+                <button class="tab" onclick="switchTab(1)">Create Page</button>
+                <button class="tab" onclick="switchTab(2)">Load Page</button>
+            </div>
+
+            <!-- Tab 1: Create Creator Profile -->
+            <div class="tab-content active">
+                <div class="form-section">
+                    <h3>Create a Creator Profile</h3>
+                    <div class="form-group">
+                        <label>Creator Name</label>
+                        <input type="text" id="creatorName" placeholder="e.g., Neon Nomad" onchange="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label>Handle</label>
+                        <input type="text" id="creatorHandle" placeholder="e.g., neon-nomad" onchange="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea id="creatorBio" placeholder="Tell your story..." onchange="updatePreview()"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Profile Image URL</label>
+                        <input type="text" id="creatorImage" placeholder="https://..." onchange="updatePreview()">
+                    </div>
+                    <button class="btn btn-primary" onclick="createProfile()">Create Creator Profile</button>
+                    <div id="profileStatus"></div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Create SKYNZ Page -->
+            <div class="tab-content">
+                <div class="form-section">
+                    <h3>Create a SKYNZ Page</h3>
+                    <div class="form-group">
+                        <label>Page Title</label>
+                        <input type="text" id="pageTitle" placeholder="e.g., Night Vibe Lounge" onchange="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label>Page Handle</label>
+                        <input type="text" id="pageHandle" placeholder="e.g., night-vibe" onchange="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="pageDescription" placeholder="Describe your page..." onchange="updatePreview()"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Theme</label>
+                        <select id="pageTheme" onchange="updatePreview()">
+                            <option value="night-vibe">Night Vibe Lounge</option>
+                            <option value="boombox">Boombox</option>
+                            <option value="jukebox">Jukebox</option>
+                            <option value="rocket">Rocket Control Center</option>
+                            <option value="ceo">CEO Desk</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>YouTube Embed URL</label>
+                        <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/embed/..." onchange="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label>Affiliate / Link</label>
+                        <input type="text" id="affiliateLink" placeholder="https://skynz.link/..." onchange="updatePreview()">
+                    </div>
+                    <button class="btn btn-primary" onclick="createPage()">Create Page</button>
+                    <div id="pageStatus"></div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Load Existing Page -->
+            <div class="tab-content">
+                <div class="form-section">
+                    <h3>Load an Existing Page</h3>
+                    <div class="form-group">
+                        <label>Page Handle</label>
+                        <input type="text" id="loadHandle" placeholder="e.g., night-vibe" onchange="updatePreview()">
+                    </div>
+                    <button class="btn btn-primary" onclick="loadPage()">Load Page</button>
+                    <div id="loadStatus"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Live Preview -->
+        <div class="right-panel">
+            <div class="preview-container">
+                <div class="preview-header">
+                    <div class="preview-title">Live Preview</div>
+                    <div style="font-size: 11px; color: #687076;">Updates in real-time</div>
+                </div>
+                <div class="preview-content" id="previewContent">
+                    <div class="preview-empty">👁️ Fill out the form to see your page preview</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(index) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+            
+            contents.forEach((content, i) => {
+                content.classList.toggle('active', i === index);
+            });
+        }
+
+        function updatePreview() {
+            const creatorName = document.getElementById('creatorName').value;
+            const creatorHandle = document.getElementById('creatorHandle').value;
+            const pageTitle = document.getElementById('pageTitle').value;
+            const pageTheme = document.getElementById('pageTheme').value;
+            const youtubeUrl = document.getElementById('youtubeUrl').value;
+            
+            let preview = '';
+            
+            if (creatorName || creatorHandle || pageTitle) {
+                preview += `
+                    <div class="preview-item">
+                        <label>Creator</label>
+                        <div class="value">${creatorName || 'Not set'} (@${creatorHandle || 'handle'})</div>
+                    </div>
+                `;
+            }
+            
+            if (pageTitle) {
+                preview += `
+                    <div class="preview-item">
+                        <label>Page Title</label>
+                        <div class="value">${pageTitle}</div>
+                    </div>
+                `;
+            }
+            
+            if (pageTheme) {
+                preview += `
+                    <div class="preview-item">
+                        <label>Theme</label>
+                        <div class="value">${pageTheme.replace('-', ' ').toUpperCase()}</div>
+                    </div>
+                `;
+            }
+            
+            if (youtubeUrl) {
+                preview += `
+                    <div class="preview-item">
+                        <label>Media Embed</label>
+                        <div class="value">✓ YouTube configured</div>
+                    </div>
+                `;
+            }
+            
+            if (!preview) {
+                preview = '<div class="preview-empty">👁️ Fill out the form to see your page preview</div>';
+            }
+            
+            document.getElementById('previewContent').innerHTML = preview;
+        }
+
+        function createProfile() {
+            const name = document.getElementById('creatorName').value;
+            const handle = document.getElementById('creatorHandle').value;
+            
+            if (!name || !handle) {
+                showStatus('profileStatus', 'Please fill in all fields', 'error');
+                return;
+            }
+            
+            showStatus('profileStatus', `Creator profile "${name}" created successfully!`, 'success');
+            setTimeout(() => {
+                switchTab(1);
+                document.getElementById('profileStatus').innerHTML = '';
+            }, 1500);
+        }
+
+        function createPage() {
+            const title = document.getElementById('pageTitle').value;
+            const handle = document.getElementById('pageHandle').value;
+            
+            if (!title || !handle) {
+                showStatus('pageStatus', 'Please fill in all fields', 'error');
+                return;
+            }
+            
+            showStatus('pageStatus', `Page "${title}" created successfully!`, 'success');
+            setTimeout(() => {
+                switchTab(2);
+                document.getElementById('pageStatus').innerHTML = '';
+            }, 1500);
+        }
+
+        function loadPage() {
+            const handle = document.getElementById('loadHandle').value;
+            
+            if (!handle) {
+                showStatus('loadStatus', 'Please enter a page handle', 'error');
+                return;
+            }
+            
+            showStatus('loadStatus', `Page "${handle}" loaded successfully!`, 'success');
+            document.getElementById('pageTitle').value = 'Night Vibe Lounge';
+            document.getElementById('pageHandle').value = handle;
+            document.getElementById('pageTheme').value = 'night-vibe';
+            updatePreview();
+        }
+
+        function showStatus(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+    </script>
+</body>
+</html>

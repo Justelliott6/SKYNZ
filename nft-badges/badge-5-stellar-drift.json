@@ -1,0 +1,58 @@
+{
+  "name": "Stellar Drift Badge",
+  "symbol": "SKYNZ",
+  "description": "A cyberpunk collectible badge for SKYNZ Creator Command Page. The Stellar Drift embodies the journey of creators across the digital cosmos—constantly evolving, discovering new audiences, and charting their own course to success. Limited edition badge with unique serial number and braided neon border.",
+  "image": "https://skynz.io/badges/stellar-drift.png",
+  "external_url": "https://skynz.io/badges/stellar-drift",
+  "attributes": [
+    {
+      "trait_type": "Badge Type",
+      "value": "Founder"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Legendary"
+    },
+    {
+      "trait_type": "Color Theme",
+      "value": "Gold & Electric Blue"
+    },
+    {
+      "trait_type": "Serial Number",
+      "value": "SKYNZ-005"
+    },
+    {
+      "trait_type": "Release Date",
+      "value": "2026-06-10"
+    },
+    {
+      "trait_type": "Creator Royalty",
+      "value": "10%"
+    },
+    {
+      "trait_type": "Collectible Status",
+      "value": "Limited to 100"
+    },
+    {
+      "trait_type": "Blockchain",
+      "value": "Solana"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://skynz.io/badges/stellar-drift.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "seller_fee_basis_points": 1000,
+  "creators": [
+    {
+      "address": "SKYNZCreatorWalletAddress",
+      "share": 100,
+      "verified": true
+    }
+  ]
+}
