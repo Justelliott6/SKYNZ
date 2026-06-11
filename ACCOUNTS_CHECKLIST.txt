@@ -1,0 +1,355 @@
+================================================================================
+SKYNZ ACCOUNTS CHECKLIST — COMPLETE SETUP GUIDE
+================================================================================
+
+PRIORITY 1: ESSENTIAL (Week 1)
+================================================================================
+
+[ ] GITHUB
+    Link: https://github.com/signup
+    Purpose: Version control & code hosting
+    Setup:
+      1. Go to https://github.com/signup
+      2. Enter email, create password, username
+      3. Verify email
+      4. Clone SKYNZ repo: git clone https://github.com/Justelliott6/SKYNZ.git
+    Key: Store GitHub PAT securely (Settings → Developer settings → Personal access tokens)
+
+[ ] PHANTOM WALLET
+    Link: https://phantom.app
+    Purpose: Solana wallet for NFT minting & transactions
+    Setup:
+      1. Go to https://phantom.app
+      2. Click "Download" → Install browser extension
+      3. Create new wallet
+      4. Save seed phrase (12 words) → WRITE ON PAPER & STORE SAFELY
+      5. Set password
+      6. Switch to Devnet (Settings → Network → Devnet)
+      7. Request SOL airdrop: https://faucet.solana.com
+    Key: NEVER share seed phrase or private key
+
+[ ] ARWEAVE
+    Link: https://www.arweave.org
+    Purpose: Permanent NFT metadata storage
+    Setup:
+      1. Go to https://www.arweave.org
+      2. Click "Get Started" → "Create Wallet"
+      3. Download wallet file (JSON) → SAVE SECURELY
+      4. Fund wallet with AR tokens (for upload fees)
+      5. Use Bundlr for cheaper uploads: https://bundlr.network
+    Key: Store wallet JSON file in secure location
+
+[ ] AWS (Amazon Web Services)
+    Link: https://aws.amazon.com
+    Purpose: S3 bucket for media storage
+    Setup:
+      1. Go to https://aws.amazon.com
+      2. Click "Create AWS Account"
+      3. Enter email, password, account name
+      4. Add payment method (credit card)
+      5. Verify phone number
+      6. Go to S3 → Create bucket (name: "skynz-media-prod")
+      7. Generate access keys (IAM → Users → Security credentials)
+      8. Store keys in .env.local (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+    Key: NEVER commit AWS keys to GitHub
+
+================================================================================
+PRIORITY 2: DEVELOPMENT (Week 2)
+================================================================================
+
+[ ] METAPLEX
+    Link: https://www.metaplex.com
+    Purpose: NFT minting infrastructure
+    Setup:
+      1. Go to https://www.metaplex.com
+      2. Click "Developers" → "Documentation"
+      3. Install Metaplex CLI: npm install -g @metaplex-foundation/sugar
+      4. Create Candy Machine config file
+      5. Upload assets to Arweave
+      6. Deploy Candy Machine
+    Key: Test on devnet first before mainnet
+
+[ ] MAGIC EDEN
+    Link: https://magiceden.io/developers
+    Purpose: NFT marketplace integration
+    Setup:
+      1. Go to https://magiceden.io/developers
+      2. Click "Get API Key"
+      3. Sign up with email
+      4. Create API key in dashboard
+      5. Store in .env.local (MAGIC_EDEN_API_KEY)
+      6. Read documentation: https://docs.magiceden.io
+    Key: Use devnet API endpoint for testing
+
+[ ] TENSOR
+    Link: https://www.tensor.trade
+    Purpose: Secondary NFT marketplace
+    Setup:
+      1. Go to https://www.tensor.trade
+      2. Click "Developers" → "API"
+      3. Sign up for API access
+      4. Request API key
+      5. Store in .env.local (TENSOR_API_KEY)
+      6. Read documentation: https://docs.tensor.trade
+    Key: Tensor is premium marketplace for high-volume creators
+
+[ ] VERCEL
+    Link: https://vercel.com
+    Purpose: Web hosting for mockups & landing page
+    Setup:
+      1. Go to https://vercel.com
+      2. Click "Sign Up"
+      3. Connect GitHub account
+      4. Import SKYNZ repository
+      5. Deploy mockups (creator-setup.html, night-vibe-lounge.html)
+      6. Get public URLs for demo
+    Key: Vercel integrates with GitHub for automatic deployments
+
+================================================================================
+PRIORITY 3: MARKETING (Week 3)
+================================================================================
+
+[ ] STRIPE
+    Link: https://stripe.com
+    Purpose: Payment processing (SOL/USDC)
+    Setup:
+      1. Go to https://stripe.com
+      2. Click "Start Now"
+      3. Create account with business info
+      4. Verify email
+      5. Add bank account for payouts
+      6. Get API keys (Publishable & Secret)
+      7. Store in .env.local (STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY)
+    Key: Use test keys for development, live keys for production
+
+[ ] SENDGRID
+    Link: https://sendgrid.com
+    Purpose: Email marketing & transactional emails
+    Setup:
+      1. Go to https://sendgrid.com
+      2. Click "Sign Up Free"
+      3. Create account
+      4. Verify email
+      5. Go to Settings → API Keys
+      6. Create new API key
+      7. Store in .env.local (SENDGRID_API_KEY)
+    Key: Use for welcome emails, payment confirmations, notifications
+
+[ ] MAILCHIMP
+    Link: https://mailchimp.com
+    Purpose: Email waitlist & marketing campaigns
+    Setup:
+      1. Go to https://mailchimp.com
+      2. Click "Sign Up Free"
+      3. Create account
+      4. Create audience (list) for SKYNZ
+      5. Get audience ID & API key
+      6. Create signup form for landing page
+      7. Store in .env.local (MAILCHIMP_API_KEY, MAILCHIMP_AUDIENCE_ID)
+    Key: Use for waitlist, newsletters, campaign tracking
+
+[ ] TIKTOK CREATOR ACCOUNT
+    Link: https://www.tiktok.com/creators
+    Purpose: Video platform for 15-second reels
+    Setup:
+      1. Go to https://www.tiktok.com
+      2. Create account (or use existing)
+      3. Go to Settings → Creator Account
+      4. Switch to Creator Account
+      5. Go to Creator Studio
+      6. Enable uploads
+      7. Create SKYNZ channel/hashtag
+    Key: Post 1-2 videos per day for algorithm boost
+
+[ ] INSTAGRAM BUSINESS ACCOUNT
+    Link: https://business.instagram.com
+    Purpose: Social media marketing
+    Setup:
+      1. Go to https://business.instagram.com
+      2. Create Business Account (or convert existing)
+      3. Set up profile with SKYNZ branding
+      4. Link to website
+      5. Enable Instagram Reels
+      6. Create content calendar
+    Key: Use Reels for 15-second videos (same as TikTok)
+
+[ ] YOUTUBE CREATOR ACCOUNT
+    Link: https://www.youtube.com/creators
+    Purpose: Video platform & long-form content
+    Setup:
+      1. Go to https://www.youtube.com
+      2. Create channel (or use existing)
+      3. Go to youtube.com/creators
+      4. Enable Shorts
+      5. Upload 15-second videos as Shorts
+      6. Create playlists for organization
+    Key: YouTube Shorts are 15-60 seconds, great for viral content
+
+================================================================================
+OPTIONAL: ANALYTICS & MONITORING (Week 4)
+================================================================================
+
+[ ] GOOGLE ANALYTICS
+    Link: https://analytics.google.com
+    Purpose: Track website traffic
+    Setup:
+      1. Go to https://analytics.google.com
+      2. Create new property
+      3. Add tracking code to website
+      4. Monitor traffic, user behavior, conversions
+
+[ ] MIXPANEL
+    Link: https://mixpanel.com
+    Purpose: Product analytics
+    Setup:
+      1. Go to https://mixpanel.com
+      2. Create account
+      3. Set up event tracking
+      4. Monitor user engagement
+
+[ ] SENTRY
+    Link: https://sentry.io
+    Purpose: Error tracking & monitoring
+    Setup:
+      1. Go to https://sentry.io
+      2. Create account
+      3. Create project for SKYNZ
+      4. Add SDK to code
+      5. Monitor errors in real-time
+
+================================================================================
+ENVIRONMENT VARIABLES TEMPLATE
+================================================================================
+
+Create .env.local file in project root with these keys:
+
+# GitHub
+GITHUB_TOKEN=ghp_your_github_pat_here
+
+# Solana
+SOLANA_RPC_URL=https://api.devnet.solana.com
+SOLANA_NETWORK=devnet
+SOLANA_WALLET_ADDRESS=your_wallet_address_here
+SOLANA_WALLET_SECRET_KEY=your_secret_key_here
+
+# Arweave
+ARWEAVE_WALLET_KEY=your_arweave_wallet_json_here
+
+# AWS S3
+AWS_ACCESS_KEY_ID=your_aws_access_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+AWS_REGION=us-east-1
+AWS_S3_BUCKET=skynz-media-prod
+
+# Metaplex
+METAPLEX_CANDY_MACHINE_ID=your_candy_machine_id
+METAPLEX_CREATOR_WALLET=your_creator_wallet_address
+
+# Magic Eden
+MAGIC_EDEN_API_KEY=your_magic_eden_api_key
+
+# Tensor
+TENSOR_API_KEY=your_tensor_api_key
+
+# Stripe
+STRIPE_PUBLIC_KEY=pk_test_your_stripe_public_key
+STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
+
+# SendGrid
+SENDGRID_API_KEY=your_sendgrid_api_key
+
+# Mailchimp
+MAILCHIMP_API_KEY=your_mailchimp_api_key
+MAILCHIMP_AUDIENCE_ID=your_mailchimp_audience_id
+
+# Database
+DATABASE_URL=postgresql://user:password@localhost:5432/skynz
+
+# App
+APP_NAME=SKYNZ
+APP_URL=https://skynz.io
+NEXT_PUBLIC_APP_URL=https://skynz.io
+
+================================================================================
+SECURITY CHECKLIST
+================================================================================
+
+[ ] Created .gitignore with .env.local
+[ ] NEVER committed .env.local to GitHub
+[ ] Stored seed phrases offline (paper + safe)
+[ ] Stored API keys in password manager
+[ ] Used different keys for devnet vs. mainnet
+[ ] Enabled 2FA on all accounts
+[ ] Backed up wallet JSON files
+[ ] Created recovery codes for 2FA
+[ ] Reviewed API key permissions
+[ ] Set API key expiration dates
+
+================================================================================
+TIMELINE
+================================================================================
+
+Week 1 (Days 1-7):
+  [ ] Create GitHub account
+  [ ] Create Phantom wallet
+  [ ] Get devnet SOL
+  [ ] Create Arweave account
+  [ ] Create AWS S3 bucket
+
+Week 2 (Days 8-14):
+  [ ] Install Metaplex CLI
+  [ ] Get Magic Eden API key
+  [ ] Get Tensor API key
+  [ ] Deploy to Vercel
+  [ ] Test NFT minting on devnet
+
+Week 3 (Days 15-21):
+  [ ] Create Stripe account
+  [ ] Create SendGrid account
+  [ ] Create Mailchimp account
+  [ ] Create TikTok creator account
+  [ ] Create Instagram business account
+
+Week 4 (Days 22-28):
+  [ ] Create YouTube creator account
+  [ ] Generate 15 videos
+  [ ] Post videos to all platforms
+  [ ] Launch waitlist
+  [ ] Reach out to first creators
+
+================================================================================
+SUPPORT RESOURCES
+================================================================================
+
+Solana:
+  - Docs: https://docs.solana.com
+  - Discord: https://discord.gg/solana
+  - Faucet: https://faucet.solana.com
+
+Metaplex:
+  - Docs: https://docs.metaplex.com
+  - Discord: https://discord.gg/metaplex
+
+Phantom:
+  - Support: https://support.phantom.app
+  - Docs: https://docs.phantom.app
+
+Magic Eden:
+  - Docs: https://docs.magiceden.io
+  - Support: support@magiceden.io
+
+Tensor:
+  - Docs: https://docs.tensor.trade
+  - Discord: https://discord.gg/tensor
+
+================================================================================
+STILL WRITING CODE AFTER 8 MONTHS 🚀
+================================================================================
+
+Status: Ready to launch
+Time: 8 months of development
+Goal: 100 Founding Creators in first month
+Price: $199 one-time
+Creator share: 95% + 10% royalty forever
+
+Let's go! 🚀

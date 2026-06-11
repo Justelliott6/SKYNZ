@@ -1,0 +1,183 @@
+{
+  "name": "Neon Nomad - SKYNZ Founding Badge",
+  "symbol": "SKYNZ-NN",
+  "description": "A legendary collectible badge granting exclusive access to SKYNZ Creator Command Page features. Neon Nomad holders unlock premium customization, priority support, and passive revenue sharing.",
+  "image": "https://arweave.net/neon-nomad-badge-image",
+  "external_url": "https://skynz.io/badges/neon-nomad",
+  "animation_url": "https://arweave.net/neon-nomad-badge-animation.gif",
+  "attributes": [
+    {
+      "trait_type": "Rarity",
+      "value": "Legendary"
+    },
+    {
+      "trait_type": "Badge Type",
+      "value": "Neon Nomad"
+    },
+    {
+      "trait_type": "Creator Royalty",
+      "value": "10%"
+    },
+    {
+      "trait_type": "Blockchain",
+      "value": "Solana"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "Founding Creator"
+    },
+    {
+      "trait_type": "Utility: Page Customization",
+      "value": "Unlimited Themes"
+    },
+    {
+      "trait_type": "Utility: Priority Support",
+      "value": "24/7 Email Support"
+    },
+    {
+      "trait_type": "Utility: Revenue Share",
+      "value": "2% Platform Revenue"
+    },
+    {
+      "trait_type": "Utility: Badge Marketplace",
+      "value": "Exclusive Listing"
+    },
+    {
+      "trait_type": "Utility: Analytics",
+      "value": "Advanced Real-Time"
+    },
+    {
+      "trait_type": "Utility: Live Streaming",
+      "value": "Unlimited Duration"
+    },
+    {
+      "trait_type": "Utility: API Access",
+      "value": "Full Developer API"
+    },
+    {
+      "trait_type": "Mint Date",
+      "value": "2026-06-11"
+    },
+    {
+      "trait_type": "Serial Number",
+      "value": "SKYNZ-NN-001"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://arweave.net/neon-nomad-badge-image.png",
+        "type": "image/png"
+      },
+      {
+        "uri": "https://arweave.net/neon-nomad-badge-animation.gif",
+        "type": "image/gif"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "SKYNZCreatorWallet123456789",
+        "share": 100,
+        "verified": true
+      }
+    ]
+  },
+  "seller_fee_basis_points": 1000,
+  "utilities": {
+    "page_customization": {
+      "name": "Unlimited Theme Customization",
+      "description": "Access all 5 premium themes (Boombox, Jukebox, Rocket Control Center, CEO Desk, Night Vibe Lounge) with unlimited color customization",
+      "tier": "premium",
+      "value": "$49/month"
+    },
+    "priority_support": {
+      "name": "24/7 Priority Email Support",
+      "description": "Direct email support with guaranteed 1-hour response time",
+      "tier": "premium",
+      "value": "$29/month"
+    },
+    "revenue_share": {
+      "name": "2% Platform Revenue Share",
+      "description": "Earn 2% of all SKYNZ platform revenue monthly (passive income)",
+      "tier": "exclusive",
+      "value": "Variable"
+    },
+    "badge_marketplace": {
+      "name": "Exclusive Badge Marketplace Listing",
+      "description": "Priority listing on Magic Eden and Tensor with featured placement",
+      "tier": "premium",
+      "value": "$19/month"
+    },
+    "advanced_analytics": {
+      "name": "Advanced Real-Time Analytics",
+      "description": "Detailed visitor analytics, engagement metrics, revenue tracking, and predictive insights",
+      "tier": "premium",
+      "value": "$39/month"
+    },
+    "unlimited_streaming": {
+      "name": "Unlimited Live Streaming Duration",
+      "description": "Stream for unlimited hours without platform restrictions",
+      "tier": "premium",
+      "value": "$59/month"
+    },
+    "developer_api": {
+      "name": "Full Developer API Access",
+      "description": "Complete REST & GraphQL API access for custom integrations and third-party apps",
+      "tier": "enterprise",
+      "value": "$99/month"
+    },
+    "custom_domain": {
+      "name": "Custom Domain Support",
+      "description": "Use your own custom domain (e.g., yourname.skynz.io or custom.com)",
+      "tier": "premium",
+      "value": "$29/month"
+    },
+    "white_label": {
+      "name": "White Label Option",
+      "description": "Remove SKYNZ branding and use your own brand identity",
+      "tier": "enterprise",
+      "value": "$199/month"
+    },
+    "early_access": {
+      "name": "Early Access to New Features",
+      "description": "Beta test new SKYNZ features before general release",
+      "tier": "exclusive",
+      "value": "Exclusive"
+    }
+  },
+  "holder_benefits": {
+    "total_monthly_value": "$422",
+    "benefits": [
+      "Unlimited theme customization",
+      "24/7 priority support",
+      "2% platform revenue share",
+      "Exclusive marketplace listing",
+      "Advanced real-time analytics",
+      "Unlimited live streaming",
+      "Full developer API access",
+      "Custom domain support",
+      "White label option",
+      "Early access to new features",
+      "Founding Creator status",
+      "Limited edition serial number",
+      "Lifetime badge holder benefits",
+      "Transferable to other wallets",
+      "Resellable on secondary markets"
+    ]
+  },
+  "redemption": {
+    "enabled": true,
+    "method": "smart_contract",
+    "contract_address": "SKYNZUtilityRedemptionProgram123456",
+    "redemption_url": "https://skynz.io/redeem",
+    "expiration": null,
+    "max_redemptions": null
+  },
+  "metadata_version": "1.0.0",
+  "collection": {
+    "name": "SKYNZ Founding Creator Badges",
+    "family": "SKYNZ",
+    "verified_creator": "SKYNZCreatorWallet123456789"
+  }
+}

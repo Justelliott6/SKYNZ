@@ -1,0 +1,273 @@
+{
+  "label": "SKYNZ Founding Creator Badges",
+  "symbol": "SKYNZ",
+  "description": "Limited edition collectible badges granting exclusive access to SKYNZ Creator Command Page features",
+  "sellerFeeBasisPoints": 1000,
+  "isMutable": true,
+  "creators": [
+    {
+      "address": "SKYNZCreatorWallet123456789",
+      "share": 100,
+      "verified": true
+    }
+  ],
+  "price": 0.5,
+  "number": 500,
+  "splToken": null,
+  "gatekeeper": null,
+  "endSettings": null,
+  "hiddenSettings": null,
+  "whitelistMintSettings": null,
+  "itemsAvailable": 500,
+  "goLiveDate": "2026-06-15T00:00:00Z",
+  "uuid": "SKYNZ-BADGES-001",
+  "awsS3Bucket": "skynz-nft-assets",
+  "awsS3Directory": "badges",
+  "awsS3Prefix": "badge",
+  "awsS3Profile": "default",
+  "nftStorageKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+  "nftStorageGateway": "https://nft.storage",
+  "retainAuthority": true,
+  "isCNFT": false,
+  "uploadMethod": "bundlr",
+  "bundlrAddress": "https://node1.bundlr.network",
+  "candyMachineProgram": "CndyV3LVqNd77ZfVj3XnYr67v7D1rKJMSnCvkMd5t42m",
+  "tokenMint": null,
+  "collection": {
+    "name": "SKYNZ Founding Creator Badges",
+    "family": "SKYNZ",
+    "verified_creator": "SKYNZCreatorWallet123456789"
+  },
+  "utilities": {
+    "enabled": true,
+    "badges": [
+      {
+        "name": "Neon Nomad",
+        "symbol": "SKYNZ-NN",
+        "rarity": "Legendary",
+        "utilities": [
+          {
+            "name": "Unlimited Theme Customization",
+            "description": "Access all 5 premium themes with unlimited color customization",
+            "tier": "premium",
+            "monthly_value": "$49"
+          },
+          {
+            "name": "24/7 Priority Support",
+            "description": "Direct email support with guaranteed 1-hour response time",
+            "tier": "premium",
+            "monthly_value": "$29"
+          },
+          {
+            "name": "2% Platform Revenue Share",
+            "description": "Earn 2% of all SKYNZ platform revenue monthly (passive income)",
+            "tier": "exclusive",
+            "monthly_value": "Variable"
+          },
+          {
+            "name": "Exclusive Badge Marketplace Listing",
+            "description": "Priority listing on Magic Eden and Tensor with featured placement",
+            "tier": "premium",
+            "monthly_value": "$19"
+          },
+          {
+            "name": "Advanced Real-Time Analytics",
+            "description": "Detailed visitor analytics, engagement metrics, revenue tracking",
+            "tier": "premium",
+            "monthly_value": "$39"
+          },
+          {
+            "name": "Unlimited Live Streaming",
+            "description": "Stream for unlimited hours without platform restrictions",
+            "tier": "premium",
+            "monthly_value": "$59"
+          },
+          {
+            "name": "Full Developer API Access",
+            "description": "Complete REST & GraphQL API access for custom integrations",
+            "tier": "enterprise",
+            "monthly_value": "$99"
+          },
+          {
+            "name": "Custom Domain Support",
+            "description": "Use your own custom domain (e.g., yourname.skynz.io)",
+            "tier": "premium",
+            "monthly_value": "$29"
+          },
+          {
+            "name": "White Label Option",
+            "description": "Remove SKYNZ branding and use your own brand identity",
+            "tier": "enterprise",
+            "monthly_value": "$199"
+          },
+          {
+            "name": "Early Access to New Features",
+            "description": "Beta test new SKYNZ features before general release",
+            "tier": "exclusive",
+            "monthly_value": "Exclusive"
+          }
+        ]
+      },
+      {
+        "name": "Cipher Sage",
+        "symbol": "SKYNZ-CS",
+        "rarity": "Legendary",
+        "utilities": [
+          {
+            "name": "Premium Theme Customization",
+            "description": "Access 3 premium themes with color customization",
+            "tier": "premium",
+            "monthly_value": "$29"
+          },
+          {
+            "name": "Priority Email Support",
+            "description": "Priority email support with 4-hour response time",
+            "tier": "premium",
+            "monthly_value": "$19"
+          },
+          {
+            "name": "1% Platform Revenue Share",
+            "description": "Earn 1% of all SKYNZ platform revenue monthly",
+            "tier": "premium",
+            "monthly_value": "Variable"
+          },
+          {
+            "name": "Advanced Analytics",
+            "description": "Detailed visitor analytics and engagement metrics",
+            "tier": "premium",
+            "monthly_value": "$19"
+          },
+          {
+            "name": "Extended Live Streaming",
+            "description": "Stream for up to 24 hours without interruption",
+            "tier": "premium",
+            "monthly_value": "$29"
+          }
+        ]
+      },
+      {
+        "name": "Pulse Guardian",
+        "symbol": "SKYNZ-PG",
+        "rarity": "Legendary",
+        "utilities": [
+          {
+            "name": "Standard Theme Customization",
+            "description": "Access 2 premium themes with basic customization",
+            "tier": "premium",
+            "monthly_value": "$19"
+          },
+          {
+            "name": "Standard Email Support",
+            "description": "Email support with 24-hour response time",
+            "tier": "premium",
+            "monthly_value": "$9"
+          },
+          {
+            "name": "Basic Analytics",
+            "description": "Basic visitor analytics and engagement metrics",
+            "tier": "premium",
+            "monthly_value": "$9"
+          },
+          {
+            "name": "Extended Live Streaming",
+            "description": "Stream for up to 12 hours without interruption",
+            "tier": "premium",
+            "monthly_value": "$19"
+          }
+        ]
+      },
+      {
+        "name": "Void Echo",
+        "symbol": "SKYNZ-VE",
+        "rarity": "Legendary",
+        "utilities": [
+          {
+            "name": "Theme Customization",
+            "description": "Access 1 premium theme with basic customization",
+            "tier": "premium",
+            "monthly_value": "$9"
+          },
+          {
+            "name": "Email Support",
+            "description": "Standard email support",
+            "tier": "premium",
+            "monthly_value": "$0"
+          },
+          {
+            "name": "Basic Analytics",
+            "description": "Basic visitor analytics",
+            "tier": "premium",
+            "monthly_value": "$0"
+          }
+        ]
+      },
+      {
+        "name": "Stellar Drift",
+        "symbol": "SKYNZ-SD",
+        "rarity": "Legendary",
+        "utilities": [
+          {
+            "name": "Founding Creator Status",
+            "description": "Exclusive Founding Creator badge and recognition",
+            "tier": "exclusive",
+            "monthly_value": "Priceless"
+          },
+          {
+            "name": "Limited Edition Serial Number",
+            "description": "Unique serial number proving early adoption",
+            "tier": "exclusive",
+            "monthly_value": "Collectible"
+          },
+          {
+            "name": "Lifetime Badge Holder Benefits",
+            "description": "Permanent holder benefits that never expire",
+            "tier": "exclusive",
+            "monthly_value": "Forever"
+          }
+        ]
+      }
+    ]
+  },
+  "redemption": {
+    "enabled": true,
+    "method": "smart_contract",
+    "contract_program": "SKYNZBadgeMintingProgram123456789",
+    "redemption_url": "https://skynz.io/redeem",
+    "supported_utilities": [
+      "theme_customization",
+      "priority_support",
+      "revenue_share",
+      "marketplace_listing",
+      "advanced_analytics",
+      "live_streaming",
+      "api_access",
+      "custom_domain",
+      "white_label",
+      "early_access"
+    ]
+  },
+  "marketplace": {
+    "enabled": true,
+    "platforms": [
+      {
+        "name": "Magic Eden",
+        "url": "https://magiceden.io",
+        "api_key": "magic_eden_api_key_here",
+        "collection_id": "SKYNZ-BADGES-001"
+      },
+      {
+        "name": "Tensor",
+        "url": "https://tensor.trade",
+        "api_key": "tensor_api_key_here",
+        "collection_id": "SKYNZ-BADGES-001"
+      }
+    ],
+    "royalty_percentage": 10,
+    "royalty_recipient": "SKYNZCreatorWallet123456789"
+  },
+  "metadata": {
+    "format": "metaplex",
+    "standard": "mpl_core",
+    "version": "1.0.0"
+  }
+}
